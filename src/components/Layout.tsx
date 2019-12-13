@@ -1,34 +1,75 @@
-import React, { FunctionComponent } from "react";
-import Head from "next/head";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ThemeProvider } from "@material-ui/styles";
+import React from "react";
+import { useSelector } from "react-redux";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
-import theme from "src/theme";
+import { getTitle } from "src/store/page";
+import StateStepper from "src/components/StateStepper";
+import StateButtons from "src/components/StateButtons";
+import Copyright from "src/components/Copyright";
 
-type Props = {
-  title?: string;
-};
+const useStyles = makeStyles(theme => ({
+  appBar: {
+    position: "relative"
+  },
+  layout: {
+    width: "auto",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: "auto",
+      marginRight: "auto"
+    }
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3)
+    }
+  }
+}));
 
-const Layout: FunctionComponent<Props> = ({
-  children,
-  title = "React coding task «Text Layout»"
-}) => (
-  <>
-    <CssBaseline />
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta
-        name="viewport"
-        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
-      />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-      />
-    </Head>
-    <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </>
-);
+export default function Layout({ children }) {
+  const title = useSelector(getTitle);
+  const classes = useStyles({});
 
-export default Layout;
+  return (
+    <>
+      <AppBar position="absolute" color="default" className={classes.appBar}>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            {title}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <main className={classes.layout}>
+        <Paper className={classes.paper}>
+          <Typography component="h1" variant="h4" align="center">
+            {children}
+          </Typography>
+
+          <Grid container>
+            <Grid item xs={8}>
+              <StateStepper />
+            </Grid>
+            <Grid item xs={4}>
+              <StateButtons />
+            </Grid>
+          </Grid>
+        </Paper>
+
+        <Copyright />
+      </main>
+    </>
+  );
+}

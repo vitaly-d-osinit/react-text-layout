@@ -1,21 +1,10 @@
-import * as React from "react";
-import { NextPage } from "next";
-import Link from "next/link";
+import React from "react";
 
 import Layout from "src/components/Layout";
 import { withRedux } from "src/lib/redux";
 
-const IndexPage: NextPage = () => {
-  return (
-    <Layout>
-      <h1>Home</h1>
-      <p>
-        <Link href="/layout">
-          <a>Layout</a>
-        </Link>
-      </p>
-    </Layout>
-  );
+const IndexPage = () => {
+  return <Layout>Index</Layout>;
 };
 
 export default withRedux(IndexPage);

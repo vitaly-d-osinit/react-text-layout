@@ -1,7 +1,8 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { initializeStore } from "src/store";
 import App from "next/app";
+
+import { initializeStore } from "src/store";
 
 let reduxStore;
 
@@ -50,7 +51,7 @@ export const withRedux = (PageComponent, { ssr = true } = {}) => {
     WithRedux.getInitialProps = async context => {
       // Get or Create the store with `undefined` as initialState
       // This allows you to set a custom default initialState
-      const reduxStore = getOrInitializeStore({});
+      const reduxStore = getOrInitializeStore(undefined);
 
       // Provide the store to getInitialProps of pages
       context.reduxStore = reduxStore;
