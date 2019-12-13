@@ -1,14 +1,13 @@
-import * as React from 'react'
-import { NextPage } from 'next'
-import Link from 'next/link'
+import * as React from "react";
+import { NextPage } from "next";
+import Link from "next/link";
 
-import Layout from 'src/components/Layout'
-import {withRedux} from 'src/lib/redux'
-
+import Layout from "src/components/Layout";
+import { withRedux } from "src/store";
 
 const IndexPage: NextPage = () => {
   return (
-    <Layout title="Home">
+    <Layout>
       <h1>Home</h1>
       <p>
         <Link href="/layout">
@@ -16,7 +15,7 @@ const IndexPage: NextPage = () => {
         </Link>
       </p>
     </Layout>
-  )
-}
+  );
+};
 
-export default withRedux(IndexPage)
+export default withRedux(IndexPage);

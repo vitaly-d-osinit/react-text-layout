@@ -1,9 +1,8 @@
-import * as React from 'react'
-import Link from 'next/link'
+import * as React from "react";
+import Link from "next/link";
 
-import Layout from 'src/components/Layout'
-import {withRedux} from 'src/lib/redux'
-
+import Layout from "src/components/Layout";
+import { withRedux } from "src/store";
 
 const LayoutPage: React.FunctionComponent = () => (
   <Layout title="Layout">
@@ -14,6 +13,6 @@ const LayoutPage: React.FunctionComponent = () => (
       </Link>
     </p>
   </Layout>
-)
+);
 
-export default withRedux(LayoutPage)
+export default withRedux(LayoutPage);
