@@ -4,12 +4,16 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import page from "./page";
 import steps from "./steps";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   page,
   steps
 };
 
 export const initializeStore = (initialState = INITIAL_STATE) => {
-  const rootReducer = combineReducers(initialState);
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware()));
+  const rootReducer = combineReducers(INITIAL_STATE);
+  return createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware())
+  );
 };

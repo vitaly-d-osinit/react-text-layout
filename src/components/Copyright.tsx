@@ -6,7 +6,11 @@ export default function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <MuiLink color="inherit" href="https://github.com/vitaly-d-osinit">
+      <MuiLink
+        color="inherit"
+        href="https://github.com/vitaly-d-osinit"
+        target="_blank"
+      >
         vitaly-d-osinit
       </MuiLink>{" "}
       {new Date().getFullYear()}

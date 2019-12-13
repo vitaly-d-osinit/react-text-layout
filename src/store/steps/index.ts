@@ -1,17 +1,19 @@
 import { createSelector } from "reselect";
 import { State, StepId } from "./types";
 
-const INITIAL_STATE: State = {
+export const STATE_DIRECTORY = "steps";
+
+export const INITIAL_STATE: State = {
   list: [
     {
       id: "STEP_TEXT",
       title: "Text area",
-      shortTitle: "Text area"
+      shortTitle: "Text"
     },
     {
       id: "STEP_TEXT_COLUMNS",
       title: "Text columns area",
-      shortTitle: "Columns area"
+      shortTitle: "Columns"
     }
   ],
   activeStep: "STEP_TEXT"
@@ -37,9 +39,9 @@ export default function reducer(state = INITIAL_STATE, data) {
 }
 
 export const getActiveStep = createSelector(
-  (state: State) => state.activeStep,
-  (state: State) => state.list,
+  (state: State) => state[STATE_DIRECTORY].activeStep,
+  (state: State) => state[STATE_DIRECTORY].list,
   (activeStep, list) => list.find(({ id }) => id === activeStep)
 );
 
-export const getStepsList = (state: State) => state.list;
+export const getStepsList = state => state[STATE_DIRECTORY].list;

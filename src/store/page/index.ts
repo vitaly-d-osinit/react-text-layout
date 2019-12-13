@@ -1,6 +1,8 @@
 import { State, Title } from "./types";
 
-const INITIAL_STATE: State = {
+export const STATE_DIRECTORY = "page";
+
+export const INITIAL_STATE: State = {
   title: "React coding task «Text Layout»"
 };
 
@@ -23,4 +25,4 @@ export default function reducer(state = INITIAL_STATE, data) {
   }
 }
 
-export const getTitle = (state: State) => state.title;
+export const getTitle = state => state[STATE_DIRECTORY].title;
