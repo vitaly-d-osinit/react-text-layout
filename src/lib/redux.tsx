@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { initializeStore } from "./index";
+import { initializeStore } from "src/store";
 import App from "next/app";
 
 let reduxStore;

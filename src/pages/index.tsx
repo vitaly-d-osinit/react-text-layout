@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 
 import Layout from "src/components/Layout";
-import { withRedux } from "src/store";
+import { withRedux } from "src/lib/redux";
 
 const IndexPage: NextPage = () => {
   return (
