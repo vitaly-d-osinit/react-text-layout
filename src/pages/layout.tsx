@@ -1,20 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 
-import Layout from "src/components/Layout";
 import { withRedux } from "src/lib/redux";
-import { initializeStore } from "src/store";
+import { initializeStore, INITIAL_STATE } from "src/store";
+import Layout from "src/components/Layout";
+import TextArea from "src/components/TextArea";
+import ColumnsStepper from "src/components/ColumnsStepper";
 
 const LayoutPage = () => {
-  return <Layout>Layout</Layout>;
+  return (
+    <Layout title="Text columns">
+      <TextArea />
+      <ColumnsStepper />
+    </Layout>
+  );
 };
 
-LayoutPage.getInitialProps = context => {
-  // context.reduxStore = initializeStore({
-  //   page: {
-  //     title: "!!!!!!!!"
-  //   }
-  // });
+LayoutPage.getInitialProps = () => {
+  return {
+    reduxStore: initializeStore({
+      ...INITIAL_STATE,
+      activeNavigation: "columns"
+    })
+  };
 };
 
 export default withRedux(LayoutPage);

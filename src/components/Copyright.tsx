@@ -8,10 +8,10 @@ export default function Copyright() {
       {"Copyright © "}
       <MuiLink
         color="inherit"
-        href="https://github.com/vitaly-d-osinit"
+        href="https://github.com/vitaly-d-osinit/react-text-layout"
         target="_blank"
       >
-        vitaly-d-osinit
+        react-text-layout
       </MuiLink>{" "}
       {new Date().getFullYear()}
       {"."}

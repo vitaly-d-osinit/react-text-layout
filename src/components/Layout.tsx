@@ -1,15 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import {
+  makeStyles,
+  AppBar,
+  Toolbar,
+  Paper,
+  Typography,
+  Grid
+} from "@material-ui/core";
+import Head from "next/head";
 
-import { getTitle } from "src/store/page";
-import StateStepper from "src/components/StateStepper";
-import StateButtons from "src/components/StateButtons";
+import { useTitle } from "src/store/page";
+import NavigationButtons from "src/components/NavigationButtons";
 import Copyright from "src/components/Copyright";
 
 const useStyles = makeStyles(theme => ({
@@ -38,16 +39,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Layout({ children }) {
-  const title = useSelector(getTitle);
+export default function Layout({ title, children }) {
+  const header = useTitle();
   const classes = useStyles({});
 
   return (
     <>
+      <Head>
+        <title>
+          {title} - {header}
+        </title>
+      </Head>
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            {title}
+            {header}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -55,16 +61,13 @@ export default function Layout({ children }) {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            {children}
+            {title}
           </Typography>
 
-          <Grid container>
-            <Grid item xs={8}>
-              <StateStepper />
-            </Grid>
-            <Grid item xs={4}>
-              <StateButtons />
-            </Grid>
+          {children}
+
+          <Grid>
+            <NavigationButtons />
           </Grid>
         </Paper>
 

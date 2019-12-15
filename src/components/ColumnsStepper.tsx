@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 
-import { getStepsList } from "src/store/steps";
-import { List } from "src/store/steps/types";
+import { useColumns, useActiveColumn } from "src/store";
 
 const useStyles = makeStyles(theme => ({
   stepper: {
@@ -22,19 +20,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function StateStepper() {
+export default function ColumnsStepper() {
   const classes = useStyles({});
-  // const activeStep = useSelector(getActiveStep);
-  const stepsList: List = useSelector(getStepsList);
+  const activeColumn = useActiveColumn();
+  const columns = useColumns();
 
   return (
-    <Stepper activeStep={1} className={classes.stepper}>
-      {Array.isArray(stepsList) &&
-        stepsList.map(({ id, title }) => (
-          <Step key={id}>
-            <StepLabel>{title}</StepLabel>
-          </Step>
-        ))}
+    <Stepper activeStep={activeColumn} className={classes.stepper}>
+      {columns.map(column => (
+        <Step key={column}>
+          <StepLabel>{column}</StepLabel>
+        </Step>
+      ))}
     </Stepper>
   );
 }
