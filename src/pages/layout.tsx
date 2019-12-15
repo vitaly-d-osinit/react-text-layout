@@ -1,4 +1,5 @@
 import React from "react";
+import Grid from "@material-ui/core/Grid";
 
 import { withRedux } from "src/lib/redux";
 import { initializeStore, INITIAL_STATE } from "src/store";
@@ -9,8 +10,14 @@ import ColumnsStepper from "src/components/ColumnsStepper";
 const LayoutPage = () => {
   return (
     <Layout title="Text columns">
-      <TextArea />
-      <ColumnsStepper />
+      <Grid spacing={2} container>
+        <Grid item xs={12}>
+          <TextArea />
+        </Grid>
+        <Grid item xs={12}>
+          <ColumnsStepper />
+        </Grid>
+      </Grid>
     </Layout>
   );
 };

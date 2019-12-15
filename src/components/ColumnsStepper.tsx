@@ -1,37 +1,52 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
+import React, { useCallback, FunctionComponent } from "react";
+import { useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
 
-import { useColumns, useActiveColumn } from "src/store";
+import { useColumns, useActiveColumn, setActiveColumn } from "src/store";
+import { Column } from "src/store/types";
 
-const useStyles = makeStyles(theme => ({
-  stepper: {
-    padding: theme.spacing(4, 0, 0)
-  },
-  buttons: {
-    display: "flex",
-    justifyContent: "flex-end"
-  },
-  button: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1)
-  }
-}));
+type ColumnStepperProps = {
+  column: Column;
+};
 
-export default function ColumnsStepper() {
-  const classes = useStyles({});
+const ColumnStepper: FunctionComponent<ColumnStepperProps> = ({ column }) => {
+  const dispatch = useDispatch();
   const activeColumn = useActiveColumn();
-  const columns = useColumns();
+  const disabled = activeColumn === column;
+
+  const handleClick = useCallback(() => {
+    dispatch(setActiveColumn(column));
+  }, [column, dispatch]);
 
   return (
-    <Stepper activeStep={activeColumn} className={classes.stepper}>
-      {columns.map(column => (
-        <Step key={column}>
-          <StepLabel>{column}</StepLabel>
-        </Step>
-      ))}
-    </Stepper>
+    <Button onClick={handleClick} disabled={disabled}>
+      {column}
+    </Button>
+  );
+};
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
+export default function ColumnsStepper() {
+  const columns = useColumns();
+  const activeColumn = useActiveColumn();
+
+  return (
+    <>
+      <Typography>Number of columns</Typography>
+      <Slider
+        defaultValue={activeColumn}
+        getAriaValueText={valuetext}
+        valueLabelDisplay="auto"
+        step={1}
+        marks
+        min={columns[0]}
+        max={columns[columns.length - 1]}
+      />
+    </>
   );
 }
