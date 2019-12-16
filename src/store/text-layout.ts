@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 
+import { chunkTextArray } from "src/utils/chunkTextArray";
 import { Store, Columns, Text, ActiveColumn } from "./types";
 
 export const setTextAction = (text: string, column: Columns) => ({
@@ -21,6 +22,12 @@ export const setText = (state: Store, action): Store => {
 export const setActiveColumnAction = (activeColumn: ActiveColumn) => ({
   type: "SET_ACTIVE_COLUMN",
   activeColumn
+});
+
+export const setActiveColumn = (state: Store, action): Store => ({
+  ...state,
+  activeColumn: action.activeColumn,
+  text: chunkTextArray(state.text, action.activeColumn)
 });
 
 export const useText = (): Text =>

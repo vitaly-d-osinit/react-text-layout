@@ -1,4 +1,9 @@
-import React, { useCallback, useState, FunctionComponent } from "react";
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  FunctionComponent
+} from "react";
 import { useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 
@@ -11,8 +16,13 @@ type TextAreaProps = {
 
 const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
   const dispatch = useDispatch();
-  const text = useText();
+  const textArr = useText();
+  const text = textArr[column] || "";
   const [textValue, textValueChange] = useState(text[column]);
+
+  useEffect(() => {
+    textValueChange(text);
+  }, [text]);
 
   const handleChange = useCallback(({ target }) => {
     textValueChange(target.value);
@@ -22,12 +32,6 @@ const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
     dispatch(setTextAction(textValue, column));
   }, [column, dispatch, textValue]);
 
-  const handleKeyDown = useCallback(({ key, target }) => {
-    if (key === "Enter") {
-      target.blur();
-    }
-  }, []);
-
   return (
     <TextField
       label="Enter text"
@@ -36,7 +40,6 @@ const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
       fullWidth
       value={textValue}
       onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
       onChange={handleChange}
     />
   );

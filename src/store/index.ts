@@ -2,7 +2,8 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import { Store } from "./types";
-import { setText } from "./text-layout";
+import { setText, setActiveColumn } from "./text-layout";
+import { setActiveNavigation } from "./page";
 
 export * from "./page";
 export * from "./text-layout";
@@ -39,17 +40,11 @@ const reducer = (state = INITIAL_STATE, action): Store => {
         title: action.title
       };
     case "SET_ACTIVE_NAVIGATION":
-      return {
-        ...state,
-        activeNavigation: action.navigationId
-      };
+      return setActiveNavigation(state, action);
     case "SET_TEXT":
       return setText(state, action);
     case "SET_ACTIVE_COLUMN":
-      return {
-        ...state,
-        activeColumn: action.activeColumn
-      };
+      return setActiveColumn(state, action);
     default:
       return state;
   }

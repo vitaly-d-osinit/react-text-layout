@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 
+import { chunkTextArray } from "src/utils/chunkTextArray";
 import {
   Store,
   Title,
@@ -17,6 +18,15 @@ export const setActiveNavigationAction = (navigationId: NavigationId) => ({
   type: "SET_ACTIVE_NAVIGATION",
   navigationId
 });
+
+export const setActiveNavigation = (state, action): Store => {
+  const columns = action.navigationId === "text" ? 1 : state.activeColumn;
+  return {
+    ...state,
+    activeNavigation: action.navigationId,
+    text: chunkTextArray(state.text, columns)
+  };
+};
 
 export const useTitle = (): Title => useSelector((state: Store) => state.title);
 

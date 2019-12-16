@@ -27,7 +27,7 @@ export default function ColumnsStepper() {
 
   return (
     <>
-      <Typography>Number of columns</Typography>
+      <Typography>Choose the number of columns:</Typography>
       <Slider
         defaultValue={activeColumn}
         valueLabelDisplay="auto"
