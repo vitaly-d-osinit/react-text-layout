@@ -5,11 +5,13 @@ import {
   Toolbar,
   Paper,
   Typography,
-  Grid
+  Grid,
+  ThemeProvider
 } from "@material-ui/core";
 import Head from "next/head";
 
 import { useTitle } from "src/store/page";
+import { useTheme } from "src/theme";
 import NavigationButtons from "src/components/NavigationButtons";
 import Copyright from "src/components/Copyright";
 
@@ -42,10 +44,12 @@ const useStyles = makeStyles(theme => ({
 export default function Layout({ title, children }) {
   const header = useTitle();
   const classes = useStyles({});
+  const theme = useTheme();
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Head>
+        <meta name="theme-color" content={theme.palette.primary.main} />
         <title>
           {title} - {header}
         </title>
@@ -78,6 +82,6 @@ export default function Layout({ title, children }) {
         </Paper>
         <Copyright />
       </main>
-    </>
+    </ThemeProvider>
   );
 }

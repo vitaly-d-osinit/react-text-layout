@@ -2,8 +2,6 @@ import React from "react";
 import Document, { Head, Main, NextScript } from "next/document";
 import { ServerStyleSheets } from "@material-ui/core";
 
-import theme from "src/theme";
-
 export default class MyDocument extends Document {
   render() {
     return (
@@ -19,7 +17,6 @@ export default class MyDocument extends Document {
             type="image/x-icon"
             href={`${process.env.ASSET_PREFIX}/favicon.ico`}
           />
-          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"

@@ -1,8 +1,6 @@
 import React from "react";
 import App from "next/app";
-import { ThemeProvider, CssBaseline } from "@material-ui/core";
-
-import theme from "src/theme";
+import { CssBaseline } from "@material-ui/core";
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -18,11 +16,9 @@ export default class MyApp extends App {
 
     return (
       <React.Fragment>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component {...pageProps} />
-        </ThemeProvider>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <Component {...pageProps} />
       </React.Fragment>
     );
   }
