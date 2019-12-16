@@ -6,7 +6,8 @@ export type Navigation = {
   id: NavigationId;
   pageTitle: string;
   linkText: string;
-  link: string;
+  href: string;
+  as: string;
 };
 
 export type ActiveNavigation = NavigationId;

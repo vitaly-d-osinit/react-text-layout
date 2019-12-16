@@ -1,5 +1,9 @@
 # React coding task «Text Layout»
 
+## Demo
+* https://vitaly-d-osinit.github.io/react-text-layout/
+
+## Task
 * We have a form with a text area where I can drop some long text and hit LAYOUT button.
 * LAYOUT button navigates me to a 'Layout page'. 
 * Text is not formatted anyhow - it remains just plain text regardless any tags in it.
@@ -12,3 +16,15 @@ Application should be good-looking - apply some css, so that it doesn't look lik
 Use React.js/Typescript
 
 Result should be provided as a code on Github   hosted version (Github pages would be fine, but if you have any other hosting - feel free to use it)
+
+## Deploy on github pages
+```
+npm i
+npm run release
+```
+
+## Local deploy
+```
+npm i
+npm run dev
+```

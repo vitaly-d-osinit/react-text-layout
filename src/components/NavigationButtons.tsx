@@ -38,7 +38,7 @@ const NavigationButton: FunctionComponent<NavigationButtonProps> = ({
   }, [dispatch, navigation]);
 
   return (
-    <Link href={navigation.link}>
+    <Link href={navigation.href} as={navigation.as}>
       <Button
         variant="contained"
         color="primary"

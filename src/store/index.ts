@@ -15,13 +15,15 @@ export const INITIAL_STATE: Store = {
       id: "text",
       pageTitle: "Text area",
       linkText: "Text",
-      link: "/"
+      href: `/`,
+      as: `${process.env.ASSET_PREFIX}/`
     },
     {
       id: "columns",
       pageTitle: "Text columns area",
       linkText: "LAYOUT",
-      link: "/layout"
+      href: `/layout`,
+      as: `${process.env.ASSET_PREFIX}/layout`
     }
   ],
   activeNavigation: "text",
