@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/index.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static/development/pages/layout.js"],{
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
 /*!*******************************************************************!*\
@@ -48030,21 +48030,21 @@ var assign=Object.assign.bind(Object);function g(){return assign;}Object.defineP
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx!./":
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx ***!
-  \***************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx!./":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
-      var mod = __webpack_require__(/*! ./src/pages/index.tsx */ "./src/pages/index.tsx")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/layout", function() {
+      var mod = __webpack_require__(/*! ./src/pages/layout.tsx */ "./src/pages/layout.tsx")
       if(true) {
-        module.hot.accept(/*! ./src/pages/index.tsx */ "./src/pages/index.tsx", function() {
-          if(!next.router.components["/"]) return
-          var updatedPage = __webpack_require__(/*! ./src/pages/index.tsx */ "./src/pages/index.tsx")
-          next.router.update("/", updatedPage)
+        module.hot.accept(/*! ./src/pages/layout.tsx */ "./src/pages/layout.tsx", function() {
+          if(!next.router.components["/layout"]) return
+          var updatedPage = __webpack_require__(/*! ./src/pages/layout.tsx */ "./src/pages/layout.tsx")
+          next.router.update("/layout", updatedPage)
         })
       }
       return mod
@@ -59667,6 +59667,70 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
+/***/ "./src/components/ColumnsStepper.tsx":
+/*!*******************************************!*\
+  !*** ./src/components/ColumnsStepper.tsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ColumnsStepper; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Typography */ "./node_modules/@material-ui/core/esm/Typography/index.js");
+/* harmony import */ var _material_ui_core_Slider__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Slider */ "./node_modules/@material-ui/core/esm/Slider/index.js");
+/* harmony import */ var src_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/store */ "./src/store/index.ts");
+var _jsxFileName = "/home/vitaliy/Projects/react-text-layout/src/components/ColumnsStepper.tsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+var useColumnsArray = function useColumnsArray() {
+  var columns = Object(src_store__WEBPACK_IMPORTED_MODULE_4__["useColumns"])();
+  return Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(function () {
+    return new Array(columns).fill(undefined).map(function (v, index) {
+      return index + 1;
+    });
+  }, [columns]);
+};
+
+function ColumnsStepper() {
+  var dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useDispatch"])();
+  var columns = useColumnsArray();
+  var activeColumn = Object(src_store__WEBPACK_IMPORTED_MODULE_4__["useActiveColumn"])();
+  var handleChange = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(function (e, value) {
+    dispatch(Object(src_store__WEBPACK_IMPORTED_MODULE_4__["setActiveColumnAction"])(value));
+  }, [dispatch]);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(_material_ui_core_Typography__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }, "Choose the number of columns:"), __jsx(_material_ui_core_Slider__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    defaultValue: activeColumn,
+    valueLabelDisplay: "auto",
+    step: 1,
+    marks: true,
+    min: columns[0],
+    max: columns[columns.length - 1],
+    onChange: handleChange,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: this
+  }));
+}
+
+/***/ }),
+
 /***/ "./src/components/Copyright.tsx":
 /*!**************************************!*\
   !*** ./src/components/Copyright.tsx ***!
@@ -60186,10 +60250,10 @@ var withRedux = function withRedux(PageComponent) {
 
 /***/ }),
 
-/***/ "./src/pages/index.tsx":
-/*!*****************************!*\
-  !*** ./src/pages/index.tsx ***!
-  \*****************************/
+/***/ "./src/pages/layout.tsx":
+/*!******************************!*\
+  !*** ./src/pages/layout.tsx ***!
+  \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60212,9 +60276,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/Grid */ "./node_modules/@material-ui/core/esm/Grid/index.js");
 /* harmony import */ var src_lib_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/lib/redux */ "./src/lib/redux.tsx");
-/* harmony import */ var src_components_Layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/components/Layout */ "./src/components/Layout.tsx");
-/* harmony import */ var src_components_TextArea__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/components/TextArea */ "./src/components/TextArea.tsx");
-/* harmony import */ var src_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/store */ "./src/store/index.ts");
+/* harmony import */ var src_store__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/store */ "./src/store/index.ts");
+/* harmony import */ var src_components_Layout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/components/Layout */ "./src/components/Layout.tsx");
+/* harmony import */ var src_components_ColumnsStepper__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! src/components/ColumnsStepper */ "./src/components/ColumnsStepper.tsx");
+/* harmony import */ var src_components_TextArea__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! src/components/TextArea */ "./src/components/TextArea.tsx");
 
 
 
@@ -60222,7 +60287,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _jsxFileName = "/home/vitaliy/Projects/react-text-layout/src/pages/index.tsx";
+var _jsxFileName = "/home/vitaliy/Projects/react-text-layout/src/pages/layout.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -60236,39 +60301,92 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 
 
-var IndexPage = function IndexPage() {
-  return __jsx(src_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    title: "Text area",
+
+var useTextColumns = function useTextColumns() {
+  var activeColumn = Object(src_store__WEBPACK_IMPORTED_MODULE_10__["useActiveColumn"])();
+  return Object(react__WEBPACK_IMPORTED_MODULE_7__["useMemo"])(function () {
+    var count = 12 / activeColumn;
+    return new Array(activeColumn).fill(count);
+  }, [activeColumn]);
+};
+
+var LayoutPage = function LayoutPage() {
+  var textColumns = useTextColumns();
+  return __jsx(src_components_Layout__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    title: "Text columns",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 23
     },
     __self: this
   }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    spacing: 2,
+    container: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 24
     },
     __self: this
-  }, __jsx(src_components_TextArea__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    column: 0,
+  }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    item: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 25
     },
     __self: this
-  })));
+  }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    container: true,
+    xs: 12,
+    wrap: "nowrap",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 26
+    },
+    __self: this
+  }, textColumns.map(function (count, column) {
+    return __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      item: true,
+      key: column,
+      xs: count,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 28
+      },
+      __self: this
+    }, __jsx(src_components_TextArea__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      column: column,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }));
+  }))), __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    item: true,
+    xs: 12,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: this
+  }, __jsx(src_components_ColumnsStepper__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: this
+  }))));
 };
 
-IndexPage.getInitialProps = function () {
+LayoutPage.getInitialProps = function () {
   return {
-    reduxStore: Object(src_store__WEBPACK_IMPORTED_MODULE_12__["initializeStore"])(_objectSpread({}, src_store__WEBPACK_IMPORTED_MODULE_12__["INITIAL_STATE"], {
-      activeNavigation: "text"
+    reduxStore: Object(src_store__WEBPACK_IMPORTED_MODULE_10__["initializeStore"])(_objectSpread({}, src_store__WEBPACK_IMPORTED_MODULE_10__["INITIAL_STATE"], {
+      activeNavigation: "columns"
     }))
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(src_lib_redux__WEBPACK_IMPORTED_MODULE_9__["withRedux"])(IndexPage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(src_lib_redux__WEBPACK_IMPORTED_MODULE_9__["withRedux"])(LayoutPage));
 
 /***/ }),
 
@@ -60596,14 +60714,14 @@ var chunkTextArray = function chunkTextArray(textArr, columns) {
 
 /***/ }),
 
-/***/ 0:
-/*!*******************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx ***!
-  \*******************************************************************************************************************************************/
+/***/ 1:
+/*!**************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx ***!
+  \**************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx!./");
 
 
 /***/ }),
@@ -60619,5 +60737,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=index.js.map
+},[[1,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=layout.js.map
