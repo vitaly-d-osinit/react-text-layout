@@ -60276,7 +60276,7 @@ IndexPage.getInitialProps = function () {
 /*!****************************!*\
   !*** ./src/store/index.ts ***!
   \****************************/
-/*! exports provided: setTitleAction, setActiveNavigationAction, setActiveNavigation, useTitle, useNavigationList, useActiveNavigation, setTextAction, setText, setActiveColumnAction, setActiveColumn, useText, useColumns, useActiveColumn, INITIAL_STATE, initializeStore */
+/*! exports provided: setTitleAction, setActiveNavigationAction, setActiveNavigation, useTitle, useNavigationList, useActiveNavigation, INITIAL_STATE, initializeStore, setTextAction, setText, setActiveColumnAction, setActiveColumn, useText, useColumns, useActiveColumn */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60596,7 +60596,7 @@ var chunkTextArray = function chunkTextArray(textArr, columns) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx ***!
   \*******************************************************************************************************************************************/
@@ -60619,5 +60619,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
