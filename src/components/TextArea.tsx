@@ -18,7 +18,7 @@ const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
   const dispatch = useDispatch();
   const textArr = useText();
   const text = textArr[column] || "";
-  const [textValue, textValueChange] = useState(text[column]);
+  const [textValue, textValueChange] = useState(text);
 
   useEffect(() => {
     textValueChange(text);
