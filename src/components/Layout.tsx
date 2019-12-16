@@ -60,17 +60,22 @@ export default function Layout({ title, children }) {
 
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            {title}
-          </Typography>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography component="h1" variant="h4" align="center">
+                {title}
+              </Typography>
+            </Grid>
 
-          {children}
+            <Grid item xs={12}>
+              {children}
+            </Grid>
 
-          <Grid>
-            <NavigationButtons />
+            <Grid item xs={12}>
+              <NavigationButtons />
+            </Grid>
           </Grid>
         </Paper>
-
         <Copyright />
       </main>
     </>

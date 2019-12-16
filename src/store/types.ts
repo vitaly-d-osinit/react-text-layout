@@ -13,13 +13,11 @@ export type ActiveNavigation = NavigationId;
 
 export type NavigationList = Navigation[];
 
-export type Column = 1 | 2 | 3;
+export type Columns = number;
 
-export type ActiveColumn = Column;
+export type ActiveColumn = Columns;
 
-export type Columns = Column[];
-
-export type Text = string;
+export type Text = string[];
 
 export interface Store {
   title: Title;

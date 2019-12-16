@@ -1,21 +1,26 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, FunctionComponent } from "react";
 import { useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 
-import { useText, setText } from "src/store/text-layout";
+import { useText, setTextAction } from "src/store";
+import { Columns } from "src/store/types";
 
-export default function TextArea() {
+type TextAreaProps = {
+  column: Columns;
+};
+
+const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
   const dispatch = useDispatch();
   const text = useText();
-  const [textValue, textValueChange] = useState(text);
+  const [textValue, textValueChange] = useState(text[column]);
 
   const handleChange = useCallback(({ target }) => {
     textValueChange(target.value);
   }, []);
 
   const handleBlur = useCallback(() => {
-    dispatch(setText(textValue));
-  }, [dispatch, textValue]);
+    dispatch(setTextAction(textValue, column));
+  }, [column, dispatch, textValue]);
 
   const handleKeyDown = useCallback(({ key, target }) => {
     if (key === "Enter") {
@@ -35,4 +40,6 @@ export default function TextArea() {
       onChange={handleChange}
     />
   );
-}
+};
+
+export default TextArea;

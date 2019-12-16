@@ -8,12 +8,12 @@ import {
   ActiveNavigation
 } from "./types";
 
-export const setTitle = (title: Title) => ({
+export const setTitleAction = (title: Title) => ({
   type: "SET_TITLE",
   title
 });
 
-export const setActiveNavigation = (navigationId: NavigationId) => ({
+export const setActiveNavigationAction = (navigationId: NavigationId) => ({
   type: "SET_ACTIVE_NAVIGATION",
   navigationId
 });

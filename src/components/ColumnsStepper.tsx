@@ -1,51 +1,41 @@
-import React, { useCallback, FunctionComponent } from "react";
+import React, { useCallback, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-import { useColumns, useActiveColumn, setActiveColumn } from "src/store";
-import { Column } from "src/store/types";
+import { useColumns, useActiveColumn, setActiveColumnAction } from "src/store";
 
-type ColumnStepperProps = {
-  column: Column;
-};
-
-const ColumnStepper: FunctionComponent<ColumnStepperProps> = ({ column }) => {
-  const dispatch = useDispatch();
-  const activeColumn = useActiveColumn();
-  const disabled = activeColumn === column;
-
-  const handleClick = useCallback(() => {
-    dispatch(setActiveColumn(column));
-  }, [column, dispatch]);
-
-  return (
-    <Button onClick={handleClick} disabled={disabled}>
-      {column}
-    </Button>
+const useColumnsArray = () => {
+  const columns = useColumns();
+  return useMemo(
+    () => new Array(columns).fill(undefined).map((v, index) => index + 1),
+    [columns]
   );
 };
 
-function valuetext(value) {
-  return `${value}°C`;
-}
-
 export default function ColumnsStepper() {
-  const columns = useColumns();
+  const dispatch = useDispatch();
+  const columns = useColumnsArray();
   const activeColumn = useActiveColumn();
+
+  const handleChange = useCallback(
+    (e, value) => {
+      dispatch(setActiveColumnAction(value));
+    },
+    [dispatch]
+  );
 
   return (
     <>
       <Typography>Number of columns</Typography>
       <Slider
         defaultValue={activeColumn}
-        getAriaValueText={valuetext}
         valueLabelDisplay="auto"
         step={1}
         marks
         min={columns[0]}
         max={columns[columns.length - 1]}
+        onChange={handleChange}
       />
     </>
   );

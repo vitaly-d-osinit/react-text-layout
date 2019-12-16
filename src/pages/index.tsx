@@ -10,7 +10,7 @@ const IndexPage = () => {
   return (
     <Layout title="Text area">
       <Grid>
-        <TextArea />
+        <TextArea column={0} />
       </Grid>
     </Layout>
   );
