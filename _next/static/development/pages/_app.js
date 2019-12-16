@@ -52835,7 +52835,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/app */ "./node_modules/next/app.js");
 /* harmony import */ var next_app__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_app__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
-/* harmony import */ var src_theme__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/theme */ "./src/theme/index.ts");
 
 
 
@@ -52844,7 +52843,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var _jsxFileName = "/home/vitaliy/Projects/react-text-layout/src/pages/_app.tsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
-
 
 
 
@@ -52879,29 +52877,22 @@ function (_App) {
       return __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
-        },
-        __self: this
-      }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["ThemeProvider"], {
-        theme: src_theme__WEBPACK_IMPORTED_MODULE_9__["default"],
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 18
         },
         __self: this
       }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_8__["CssBaseline"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 20
         },
         __self: this
       }), __jsx(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 21
         },
         __self: this
-      }))));
+      })));
     }
   }]);
 
@@ -52909,21 +52900,6 @@ function (_App) {
 }(next_app__WEBPACK_IMPORTED_MODULE_7___default.a);
 
 
-
-/***/ }),
-
-/***/ "./src/theme/index.ts":
-/*!****************************!*\
-  !*** ./src/theme/index.ts ***!
-  \****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_0__["createMuiTheme"])());
 
 /***/ }),
 
