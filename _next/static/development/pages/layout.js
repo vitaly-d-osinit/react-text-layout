@@ -59988,7 +59988,8 @@ var NavigationButton = function NavigationButton(_ref) {
     dispatch(Object(src_store_page__WEBPACK_IMPORTED_MODULE_5__["setActiveNavigationAction"])(navigation.id));
   }, [dispatch, navigation]);
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: navigation.link,
+    href: navigation.href,
+    as: navigation.as,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 41
@@ -60468,12 +60469,14 @@ var INITIAL_STATE = {
     id: "text",
     pageTitle: "Text area",
     linkText: "Text",
-    link: "/"
+    href: "/",
+    as: "".concat("", "/")
   }, {
     id: "columns",
     pageTitle: "Text columns area",
     linkText: "LAYOUT",
-    link: "/layout"
+    href: "/layout",
+    as: "".concat("", "/layout")
   }],
   activeNavigation: "text",
   text: [],
@@ -60711,7 +60714,7 @@ var chunkTextArray = function chunkTextArray(textArr, columns) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 0:
 /*!**************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Flayout&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Flayout.tsx ***!
   \**************************************************************************************************************************************************/
@@ -60734,5 +60737,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=layout.js.map

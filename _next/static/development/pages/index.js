@@ -59924,7 +59924,8 @@ var NavigationButton = function NavigationButton(_ref) {
     dispatch(Object(src_store_page__WEBPACK_IMPORTED_MODULE_5__["setActiveNavigationAction"])(navigation.id));
   }, [dispatch, navigation]);
   return __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: navigation.link,
+    href: navigation.href,
+    as: navigation.as,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 41
@@ -60275,7 +60276,7 @@ IndexPage.getInitialProps = function () {
 /*!****************************!*\
   !*** ./src/store/index.ts ***!
   \****************************/
-/*! exports provided: setTitleAction, setActiveNavigationAction, setActiveNavigation, useTitle, useNavigationList, useActiveNavigation, INITIAL_STATE, initializeStore, setTextAction, setText, setActiveColumnAction, setActiveColumn, useText, useColumns, useActiveColumn */
+/*! exports provided: setTitleAction, setActiveNavigationAction, setActiveNavigation, useTitle, useNavigationList, useActiveNavigation, setTextAction, setText, setActiveColumnAction, setActiveColumn, useText, useColumns, useActiveColumn, INITIAL_STATE, initializeStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60350,12 +60351,14 @@ var INITIAL_STATE = {
     id: "text",
     pageTitle: "Text area",
     linkText: "Text",
-    link: "/"
+    href: "/",
+    as: "".concat("", "/")
   }, {
     id: "columns",
     pageTitle: "Text columns area",
     linkText: "LAYOUT",
-    link: "/layout"
+    href: "/layout",
+    as: "".concat("", "/layout")
   }],
   activeNavigation: "text",
   text: [],
@@ -60593,7 +60596,7 @@ var chunkTextArray = function chunkTextArray(textArr, columns) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!*******************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fvitaliy%2FProjects%2Freact-text-layout%2Fsrc%2Fpages%2Findex.tsx ***!
   \*******************************************************************************************************************************************/
@@ -60616,5 +60619,5 @@ module.exports = dll_ef0ff7c60362f24a921f;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
