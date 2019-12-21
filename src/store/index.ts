@@ -1,9 +1,19 @@
-import { createStore, applyMiddleware } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
+import { configureStore, createReducer } from "@reduxjs/toolkit";
 
-import { Store } from "./types";
-import { setText, setActiveColumn } from "./text-layout";
-import { setActiveNavigation } from "./page";
+import { Store, Action } from "./types";
+import {
+  setText,
+  SetText,
+  setActiveColumn,
+  SetActiveColumn
+} from "./text-layout";
+import {
+  setTitle,
+  SetTitle,
+  setActiveNavigation,
+  SetActiveNavigation
+} from "./page";
+import { chunkTextArray } from "src/utils/chunkTextArray";
 
 export * from "./page";
 export * from "./text-layout";
@@ -32,30 +42,46 @@ export const INITIAL_STATE: Store = {
   activeColumn: 1
 };
 
-const reducer = (state = INITIAL_STATE, action): Store => {
-  const { type } = action || {};
-
-  switch (type) {
-    case "SET_TITLE":
-      return {
-        ...state,
-        title: action.title
-      };
-    case "SET_ACTIVE_NAVIGATION":
-      return setActiveNavigation(state, action);
-    case "SET_TEXT":
-      return setText(state, action);
-    case "SET_ACTIVE_COLUMN":
-      return setActiveColumn(state, action);
-    default:
-      return state;
-  }
-};
+const reducer = createReducer<Store>(INITIAL_STATE, {
+  [setTitle.type]: (state: Store, { payload }: Action<SetTitle>) => {
+    return {
+      ...state,
+      title: payload
+    };
+  },
+  [setActiveNavigation.type]: (
+    state: Store,
+    { payload }: Action<SetActiveNavigation>
+  ): Store => {
+    const columns = payload === "text" ? 1 : state.activeColumn;
+    return {
+      ...state,
+      activeNavigation: payload,
+      text: chunkTextArray(state.text, columns)
+    };
+  },
+  [setText.type]: (state: Store, { payload }: Action<SetText>): Store => {
+    const newText = new Array(state.columns).fill("");
+    return {
+      ...state,
+      text: newText.map((text, column) =>
+        column === payload.columns ? payload.text : state.text[column] || ""
+      )
+    };
+  },
+  [setActiveColumn.type]: (
+    state: Store,
+    { payload }: Action<SetActiveColumn>
+  ): Store => ({
+    ...state,
+    activeColumn: payload,
+    text: chunkTextArray(state.text, payload)
+  })
+});
 
 export const initializeStore = (preloadedState = INITIAL_STATE) => {
-  return createStore(
+  return configureStore({
     reducer,
-    preloadedState,
-    composeWithDevTools(applyMiddleware())
-  );
+    preloadedState
+  });
 };

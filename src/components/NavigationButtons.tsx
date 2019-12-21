@@ -7,7 +7,7 @@ import Link from "next/link";
 import {
   useNavigationList,
   useActiveNavigation,
-  setActiveNavigationAction
+  setActiveNavigation
 } from "src/store/page";
 import { Navigation } from "src/store/types";
 
@@ -34,7 +34,7 @@ const NavigationButton: FunctionComponent<NavigationButtonProps> = ({
   const activeNavigation = useActiveNavigation();
 
   const handleClick = useCallback(() => {
-    dispatch(setActiveNavigationAction(navigation.id));
+    dispatch(setActiveNavigation(navigation.id));
   }, [dispatch, navigation]);
 
   return (

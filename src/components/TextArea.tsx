@@ -7,7 +7,7 @@ import React, {
 import { useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 
-import { useText, setTextAction } from "src/store";
+import { useText, setText } from "src/store";
 import { Columns } from "src/store/types";
 
 type TextAreaProps = {
@@ -29,7 +29,7 @@ const TextArea: FunctionComponent<TextAreaProps> = ({ column = 0 }) => {
   }, []);
 
   const handleBlur = useCallback(() => {
-    dispatch(setTextAction(textValue, column));
+    dispatch(setText({ text: textValue, columns: column }));
   }, [column, dispatch, textValue]);
 
   return (

@@ -1,3 +1,7 @@
+export type Action<P> = {
+  payload: P;
+};
+
 export type Title = string;
 
 export type NavigationId = "text" | "columns";

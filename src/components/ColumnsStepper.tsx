@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 
-import { useColumns, useActiveColumn, setActiveColumnAction } from "src/store";
+import { useColumns, useActiveColumn, setActiveColumn } from "src/store";
 
 const useColumnsArray = () => {
   const columns = useColumns();
@@ -20,7 +20,7 @@ export default function ColumnsStepper() {
 
   const handleChange = useCallback(
     (e, value) => {
-      dispatch(setActiveColumnAction(value));
+      dispatch(setActiveColumn(value));
     },
     [dispatch]
   );
