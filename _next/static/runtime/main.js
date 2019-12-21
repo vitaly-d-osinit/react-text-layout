@@ -6999,7 +6999,7 @@ if (!window.Promise) {
 
 var data = JSON.parse(document.getElementById('__NEXT_DATA__').textContent);
 window.__NEXT_DATA__ = data;
-var version = "9.1.5";
+var version = "9.1.6";
 exports.version = version;
 var props = data.props,
     err = data.err,
@@ -7703,9 +7703,11 @@ var _mitt = _interopRequireDefault(__webpack_require__(/*! ../next-server/lib/mi
 /* global document, window */
 
 
+var prefetchOrPreload = undefined ? 'prefetch' : 'preload';
+
 function supportsPreload(el) {
   try {
-    return el.relList.supports('preload');
+    return el.relList.supports(prefetchOrPreload);
   } catch (_unused) {
     return false;
   }
@@ -7713,12 +7715,20 @@ function supportsPreload(el) {
 
 var hasPreload = supportsPreload(document.createElement('link'));
 
-function preloadScript(url) {
+function preloadLink(url, resourceType) {
   var link = document.createElement('link');
-  link.rel = 'preload';
+  link.rel = prefetchOrPreload;
   link.crossOrigin = undefined;
   link.href = url;
-  link.as = 'script';
+  link.as = resourceType;
+  document.head.appendChild(link);
+}
+
+function loadStyle(url) {
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.crossOrigin = undefined;
+  link.href = url;
   document.head.appendChild(link);
 }
 
@@ -7941,7 +7951,7 @@ function () {
                 url = _this2.assetPrefix + (isDependency ? route : "/_next/static/" + encodeURIComponent(_this2.buildId) + "/pages" + encodeURI(scriptRoute)); // n.b. If preload is not supported, we fall back to `loadPage` which has
                 // its own deduping mechanism.
 
-                if (!document.querySelector("link[rel=\"preload\"][href^=\"" + url + "\"], script[data-next-page=\"" + route + "\"]")) {
+                if (!document.querySelector("link[rel=\"" + prefetchOrPreload + "\"][href^=\"" + url + "\"], script[data-next-page=\"" + route + "\"]")) {
                   _context2.next = 6;
                   break;
                 }
@@ -7984,7 +7994,7 @@ function () {
                   break;
                 }
 
-                preloadScript(url);
+                preloadLink(url, url.match(/\.css$/) ? 'style' : 'script');
                 return _context2.abrupt("return");
 
               case 18:
@@ -8696,7 +8706,7 @@ function () {
         throw new Error("Cannot update unavailable route: ".concat(route));
       }
 
-      var newData = _Object$assign({}, data, {
+      var newData = _Object$assign(_Object$assign({}, data), {
         Component: Component
       });
 
@@ -8864,7 +8874,7 @@ function () {
           } // @ts-ignore pathname is always defined
 
 
-          _this2.set(route, pathname, query, as, _Object$assign({}, routeInfo, {
+          _this2.set(route, pathname, query, as, _Object$assign(_Object$assign({}, routeInfo), {
             hash: hash
           }));
 
@@ -9271,8 +9281,8 @@ function () {
   return Router;
 }();
 
-Router.events = mitt_1["default"]();
 exports["default"] = Router;
+Router.events = mitt_1["default"]();
 
 /***/ }),
 
