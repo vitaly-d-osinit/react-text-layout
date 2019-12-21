@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { createMuiTheme, useMediaQuery } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core";
 
 export const useTheme = () => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const prefersDarkMode = false; // useMediaQuery("(prefers-color-scheme: dark)");
 
   return useMemo(
     () =>

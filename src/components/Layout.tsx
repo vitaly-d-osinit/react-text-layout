@@ -19,6 +19,13 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     position: "relative"
   },
+  toolbar: {
+    [theme.breakpoints.up("lg")]: {
+      width: theme.breakpoints.values.lg,
+      marginLeft: "auto",
+      marginRight: "auto"
+    }
+  },
   layout: {
     width: "auto",
     marginLeft: theme.spacing(2),
@@ -54,8 +61,8 @@ export default function Layout({ title, children }) {
           {title} - {header}
         </title>
       </Head>
-      <AppBar position="absolute" color="default" className={classes.appBar}>
-        <Toolbar>
+      <AppBar color="default" className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit" noWrap>
             {header}
           </Typography>
