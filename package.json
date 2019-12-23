@@ -1,13 +1,16 @@
 {
   "name": "react-text-layout",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "React coding task «Text Layout»",
+  "author": "Demkin Vitaliy <qwiray@gmail.com>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "export": "next export",
     "build-static": "npm run build && npm run export",
-    "release": "npm run build-static && touch out/.nojekyll && gh-pages -t -d out",
+    "release": "next build && next export __build && touch __build/.nojekyll && gh-pages -t -d __build && rimraf ./__build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -37,6 +40,7 @@
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
     "typescript": "^3.7.4"
   }
 }
